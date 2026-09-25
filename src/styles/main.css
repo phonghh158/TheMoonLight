@@ -1,0 +1,100 @@
+/* src/styles/main.css */
+@import url("https://fonts.googleapis.com/css2?family=Birthstone&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap");
+
+:root {
+    --font-text: "Google Sans", sans-serif;
+    --font-fancy: "Birthstone", cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #050811;
+    color: #eaeaea;
+    font-family: var(--font-text);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-image: url("/assets/images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.stage-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    display: flex;
+    margin-top: 4px;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-family: var(--font-fancy);
+    color: #882a0a;
+    z-index: 9999;
+}
+
+section {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding: 96px 64px 64px;
+    border-radius: 8px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(241, 241, 241, 0.2);
+    background-color: transparent;
+}
+
+.guide-notification {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    transform: translateX(-110%);
+    background: #383838;
+    color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+    border-left: none;
+    box-shadow: 0 0 8px rgba(246, 225, 166, 0.66);
+    padding: 8px 24px;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+    font-family: var(--font-text);
+    z-index: 9999;
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    pointer-events: none;
+}
+
+.guide-notification.guide-active {
+    transform: translateX(0);
+}
+
+.hidden {
+    display: none !important;
+}

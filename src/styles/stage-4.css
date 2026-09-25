@@ -1,0 +1,224 @@
+/* src/styles/stage-4.css */
+#stage-4 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+    color: #333333;
+}
+
+.stage4-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 16px 20px;
+}
+
+.stage4-workspace {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.stage4-dock {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.table-overview-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 80px;
+}
+
+.table-item-box {
+    cursor: pointer;
+    transition: transform 0.25s ease;
+    position: relative;
+}
+
+.table-item-box:hover {
+    transform: scale(1.05);
+}
+
+.table-item-box.done-item {
+    cursor: default;
+    opacity: 0.9;
+}
+
+.table-cake-wrap {
+    position: relative;
+    width: 290px;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-plate-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.table-cake-img {
+    position: relative;
+    width: 145px;
+    height: 145px;
+    object-fit: contain;
+    transform: translateY(-5px);
+}
+
+.table-tea-wrap {
+    position: relative;
+    width: 290px;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-teapot-img {
+    width: 230px;
+    height: 230px;
+    object-fit: contain;
+}
+
+.item-badge-done {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #27ae60;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+.cut-cake-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cut-plate-container {
+    position: relative;
+    width: 440px;
+    height: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cut-plate-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.cut-cake-img {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    object-fit: contain;
+    transform: translateY(-8px);
+}
+
+.cut-lines-svg {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    transform: translateY(-8px);
+    z-index: 5;
+    cursor: crosshair;
+}
+
+.cake-cut-line {
+    stroke: #ffffff;
+    stroke-width: 4px;
+    stroke-linecap: round;
+    stroke-dasharray: 8 6;
+    opacity: 0.75;
+    transition:
+        stroke-dasharray 0.2s ease,
+        stroke 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.cake-cut-line.cut-done {
+    stroke-dasharray: none;
+    stroke: #f1c40f;
+    opacity: 0.95;
+}
+
+.pour-tea-stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pour-teapot-container {
+    position: relative;
+    width: 440px;
+    height: 440px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pour-interactive-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    user-select: none;
+    cursor: pointer;
+}
+
+.final-showcase-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+}
+
+.showcase-end-img {
+    max-width: 720px;
+    margin-bottom: 16px;
+    object-fit: cover;
+}
+
+.showcase-poem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.poem-line-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffb563;
+    letter-spacing: 1px;
+}
+
+.poem-line-sub {
+    font-size: 18px;
+    color: #444444;
+    font-style: italic;
+}

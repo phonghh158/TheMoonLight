@@ -1,0 +1,54 @@
+- 10: Lượng nước khoảng 10%
+- 50: Lượng nước khoảng 50%
+- 100: Lượng nước trong ấm đạt 100%
+- open_1: Mở hé nắp ấm (animation)
+- open_2: Mở nắp ấm ra rõ hơn. (animation)
+- teapot: Hình ảnh ấm trà với góc nhìn từ trên xuống (default theo step)
+
+- tea_fill_1, tea_fill_2: Hình ảnh cho trà vào ấm, một lần hay hai lần
+- tea_filled_1, tea_filled_2: Hình ảnh trà trong ấm sau 1 lần cho hay là 2 lần cho.
+
+- final_teapot là ấm trà sau khi pha xong
+- close_normal: ấm được đóng nắp hoàn toàn khi không có nước sôi
+- close_steam: ấm được đóng nắp hoàn toàn nhưng có nước sôi
+
+just_water là hình ảnh mà ấm chỉ có nước, không có trà - phục vụ cho bước tráng ấm
+no_tea_no_water là hình ảnh ấm rỗng, phục vụ những hình ảnh ban đầu
+tea_and_water là hình ảnh ấm có trà khô và được rót nước
+tea_and_water_1 là hình ảnh ấm trà có trà ướt, số lượng trà trong ấm ít thể hiện cho việc chỉ cho 1 lần trà
+tea_and_water_2 là hình ảnh ấm trà có trà ướt, số lượng trà trong ấm nhiều thể hiện cho việc chỉ cho 2 lần trà
+tea_fills là những hình ảnh thể hiện cho việc đổ trà vào.
+
+
+1. Tráng ấm
+close_normal -> click nắp ấm -> go to no_tea_no_water -> open_1, open_2 1000ms -> teapot 
+-> Rót nước -> go to just_water -> 10 50 theo mức nước -> Rót nước xong -> open_2, open_1 1000ms -> close_steam
+-> tráng ấm -> đổ nước -> giữ nguyên ảnh close_steam -> đổ hết nước thì để close_normal.
+
+2. Chọn trà. Ảnh hưởng đến step 5
+- Trà xanh Thái Nguyên (1) -> timer 3 phút
+- Trà Ô Long (2) -> timer 5 phút
+- Trà Hoa cúc -> timer 7 phút
+- Hồng Trà -> Hiện ra hình ảnh đi mua và nút next stage.
+
+3 vs 4. Cho trà vào ấm và Tráng trà
+close_normal -> click nắp ấm -> go to no_tea_no_water -> open_1, open_2 1000ms -> teapot 
+-> chọn số lượng trà -> go to tea_fills -> if 1 thìa then tea_fill_1, tea_filled_1 1200ms else if 2 thìa then tea_fill_1, tea_filled_1 600ms tea_fill_2 tea_filled_2 1000ms
+-> rót nước tráng trà -> go to tea_and_water -> 10 -> open_2 open_1 900ms -> close_steam -> timer x3, 30s realtime = 10s game -> giữ nguyên close_steam trong bước đổ nước tráng trà.
+
+5. Pha trà
+close_steam -> click nắp ấm -> if step 3 = 1 thìa then go to tea_and_water_1 else if step 3 = 2 thìa then go to tea_and_water_2 -> open_1 open_2 900ms -> teapot
+-> if water <= 75 and >= 33 then use 50 else > 75 use 100 -> rót nước xong -> close_1 close_2 800ms -> close_steam -> timer chạy nhanh 1s game = 1phút realtime -> Hiển thị thành phẩm final_teapot.
+
+Đây là kết quả: go to final_teapot
+1 muỗng trà + <= 75% nước: Trà vừa final_teapot_1
+2 muỗng trà + > 75% nước: Trà vừa final_teapot_1
+2 muỗng trà + <= 75% nước: Trà đặc final_teapot_2
+1 muỗng trà + > 75% nước: trà thanh final_teapot_3
+
+
+tchave_tpno tchave_tpsome tcno_tphave tcno_tpno tcno_tpsome
+
+Nếu lúc nhấn water < 75: tcno_tpno -> tcno_tpsome -> tcno_tphave -> Nếu vẫn cứ nhấn giữ đến khi water >= 75 thì hiển thị tchave_tphave. 
+Nếu thả giữ lúc water < 75: tcno_tphave -> tcno_tpsome -> tcno_tpno và có thể nhấn giữ tiếp để rót tiếp.
+Nếu thả giữ lúc water >= 75: tchave_tphave -> tchave_tpsome -> tchave_tpno và dừng game, dừng hình ảnh 3000ms để xem thành quả.

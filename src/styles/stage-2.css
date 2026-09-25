@@ -1,0 +1,395 @@
+/* src/styles/stage-2.css */
+#stage-2 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    color: #333333;
+    background-color: transparent;
+}
+
+#stage-2.stage-oven-bg,
+#stage-2.stage-plate-bg {
+    background-color: transparent;
+}
+
+.stage2-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 16px 20px;
+}
+
+.stage2-workspace {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.stage2-dock {
+    width: 100%;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.selection-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.slider-btn {
+    background: #e8dcc4;
+    color: #333333;
+    border: 2px solid #bcaaa4;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+.slider-btn:hover {
+    transform: scale(1.1);
+    background: #dfcfb2;
+}
+
+.cake-preview-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+.cake-image-box {
+    width: 290px;
+    height: 290px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cake-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(109, 76, 65, 0.2));
+}
+
+.cake-name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #333333;
+    margin-top: 8px;
+}
+
+.bake-arena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.oven-timer-display {
+    font-size: 30px;
+    font-weight: 700;
+    color: #333333;
+    letter-spacing: 2px;
+    background: #ede0d4;
+    padding: 4px 18px;
+    border-radius: 6px;
+    border: 1px solid #d7ccc8;
+}
+
+.bake-main-stage {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.oven-viewport {
+    width: 380px;
+    height: 380px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.oven-viewport img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.thermometer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.thermometer-tube {
+    width: 26px;
+    height: 260px;
+    background: #e6dfd5;
+    border: 2px solid #bcaaa4;
+    border-radius: 13px;
+    position: relative;
+    overflow: hidden;
+}
+
+.target-heat-zone {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: rgba(46, 204, 113, 0.45);
+    border-top: 2px dashed #27ae60;
+    border-bottom: 2px dashed #27ae60;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.heat-liquid-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #e67e22;
+    border-radius: 0 0 13px 13px;
+    transition:
+        height 0.05s linear,
+        background 0.2s;
+    z-index: 1;
+}
+
+.temp-readout {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.bake-dashboard-dock {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    background: #ebdcc9;
+    padding: 10px 24px;
+    border-radius: 10px;
+    border: 1px solid #d7ccc8;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.bake-stat-box {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #666666;
+}
+
+.stat-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.bake-action-hint {
+    font-size: 14px;
+    color: #333333;
+    max-width: 320px;
+    line-height: 1.4;
+}
+
+.brush-work-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: none;
+}
+
+.brush-feedback-fancy {
+    font-family: var(--font-fancy);
+    font-size: 48px;
+    color: #8d6e63;
+    height: 54px;
+    margin-bottom: 8px;
+    pointer-events: none;
+    user-select: none;
+}
+
+.brush-feedback-fancy.pop {
+    animation: fancyPop 0.4s ease-out;
+}
+
+@keyframes fancyPop {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+    80% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.brush-cake-container {
+    width: 380px;
+    height: 380px;
+    position: relative;
+}
+
+.brush-underlay-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.brush-mask-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.brush-cursor-follower {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    z-index: 100;
+    transform: translate(-10%, -20%) rotate(-15deg);
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.brush-dashboard-dock {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.final-cake-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.final-plate-container {
+    position: relative;
+    width: 505px;
+    height: 505px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.final-plate-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.final-plated-cake {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    z-index: 2;
+    transform: translateY(-8px);
+    filter: drop-shadow(0 6px 12px rgba(93, 64, 55, 0.35));
+}
+
+.final-cake-congrats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    text-align: center;
+}
+
+.final-cake-congrats .congrats-sub {
+    font-size: 16px;
+    color: #555555;
+}
+
+.final-cake-congrats .congrats-main {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333333;
+}
+
+.dock-btn {
+    background: #dfcfb2;
+    color: #333333;
+    border: 1px solid #bcaaa4;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition:
+        background 0.2s,
+        transform 0.1s;
+}
+
+.dock-btn:hover {
+    background: #d5c3a3;
+}
+
+.dock-btn.secondary-btn {
+    background: #ebdcc9;
+    color: #333333;
+}
+
+.dock-btn.secondary-btn:hover {
+    background: #dfcfb2;
+}
+
+.dock-btn.primary-btn {
+    background: #b08968;
+    color: #ffffff;
+    border: none;
+}
+
+.dock-btn.primary-btn:hover {
+    background: #9c6644;
+}
