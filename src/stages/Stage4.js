@@ -3,8 +3,18 @@ class Stage4Logic {
     constructor(results = {}) {
         this.results = results;
         this.isCakeCut = false;
-        this.isTeaPoured = false;
-        this.teaWater = 0;
+
+        const isShoppingTea =
+            Boolean(this.results.stage3 && this.results.stage3.isShopping) ||
+            Boolean(
+                this.results.stage3 &&
+                this.results.stage3.selectedTea &&
+                this.results.stage3.selectedTea.id === 4,
+            );
+
+        this.isPurchasedTea = isShoppingTea;
+        this.isTeaPoured = isShoppingTea; // Đã mua sẵn nên không cần rót
+        this.teaWater = isShoppingTea ? 100 : 0;
         this.cutLines = [false, false, false, false];
     }
 
@@ -16,6 +26,9 @@ class Stage4Logic {
     }
 
     getTeapotAsset() {
+        if (this.isPurchasedTea) {
+            return "/assets/images/stage4/wuja.png";
+        }
         if (
             this.results.stage3 &&
             this.results.stage3.teaResult &&

@@ -63,9 +63,17 @@ class Stage4UI {
             return;
         }
 
-        this.triggerGuide("Chọn bánh Trung Thu để cắt hoặc ấm trà để rót.");
+        const isShopping = this.logic.isPurchasedTea;
+        if (isShopping) {
+            this.triggerGuide("Hồng trà đã mua sẵn! Hãy nhấn vào bánh Trung Thu để cắt bánh.");
+        } else {
+            this.triggerGuide("Chọn bánh Trung Thu để cắt hoặc ấm trà để rót.");
+        }
+
         const cakeImg = this.logic.getCakeAsset();
         const teapotImg = this.logic.getTeapotAsset();
+
+        const teaBadgeText = isShopping ? "Đã mua" : "Đã rót";
 
         this.workspaceEl.innerHTML = `
             <div class="table-overview-stage">
@@ -79,8 +87,8 @@ class Stage4UI {
 
                 <div class="table-item-box ${this.logic.isTeaPoured ? "done-item" : ""}" id="table-tea-btn">
                     <div class="table-tea-wrap">
-                        <img src="${teapotImg}" class="table-teapot-img" alt="Ấm trà" />
-                        ${this.logic.isTeaPoured ? '<div class="item-badge-done">Đã rót</div>' : ""}
+                        <img src="${teapotImg}" class="table-teapot-img" alt="Trà" />
+                        ${this.logic.isTeaPoured ? `<div class="item-badge-done">${teaBadgeText}</div>` : ""}
                     </div>
                 </div>
             </div>
@@ -88,8 +96,10 @@ class Stage4UI {
 
         this.renderDashboardDock(
             "Bàn tiệc Trung Thu",
-            "Thưởng trà & Bánh",
-            "Nhấn vào món chưa hoàn thành trên bàn để bắt đầu thưởng thức.",
+            isShopping ? "Cắt bánh & Thưởng thức" : "Thưởng trà & Bánh",
+            isShopping
+                ? "Hồng trà đã mua sẵn ở ly, cậu chỉ cần cắt bánh là hoàn thành bàn tiệc."
+                : "Nhấn vào món chưa hoàn thành trên bàn để bắt đầu thưởng thức.",
         );
 
         this.workspaceEl.querySelector("#table-cake-btn").addEventListener("click", () => {
@@ -374,17 +384,7 @@ class Stage4UI {
             </div>
         `;
 
-        this.dockEl.innerHTML = `
-            <div class="dock-actions">
-                <button class="dock-btn primary-btn" id="btn-replay-game">Chơi lại từ đầu</button>
-            </div>
-        `;
-
-        this.dockEl.querySelector("#btn-replay-game").addEventListener("click", () => {
-            if (window.gameState) {
-                window.gameState.showStage(1);
-            }
-        });
+        this.dockEl.innerHTML = ``;
     }
 }
 
